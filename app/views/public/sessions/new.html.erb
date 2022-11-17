@@ -1,15 +1,15 @@
 <!-- 顧客側 -->
 
-<h2>顧客Log in</h2>
+<h2>ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label "メールアドレス" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "tanaka@example.com" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label "パスワード" %>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -21,7 +21,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン" %>
   </div>
 <% end %>
 
