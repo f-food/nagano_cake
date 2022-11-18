@@ -15,7 +15,7 @@ class Customer < ApplicationRecord
   POST_CODE_REGEXP = /\A\d{7}\z/
   validates :post_code, presence: true, format: { :with => POST_CODE_REGEXP }
   validates :address, presence: true
-  # ハイフンなしの１０桁or１１桁のみ入力可能
+  # ハイフンなしの１０桁or１１桁のみ入力可能にする
   PHONE_NUMBER_REGEXP = /\A\d{10,11}\z/
   validates :phone_number, presence: true, format: { :with => PHONE_NUMBER_REGEXP }
 end
