@@ -1,1 +1,35 @@
-<h1>top</h1>
+<div class='container px-5 px-sm-0'>
+  <h2 class="mt-4">
+    <span style="background-color:#eee">注文履歴一覧</span>
+  </h2>
+  <div class='row'>
+
+    <div class='col-md-8 mt-4'>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td><u>
+              <%= link_to admin_order_path(order), class: "text-dark" do %>
+                <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+              <% end %>
+            </u></td>
+            <td><%= order.name %></td>
+            <td><%= order.order_items.sum(:amount) %></td>
+            <td><%= order.status_i18n %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @orders %>
+    </div>
+  </div>
+</div>
