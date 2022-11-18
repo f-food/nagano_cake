@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        ジャンル一覧admin/genres/index共有テンプレート予定
+      </div>
+       <div  class='col-md-9 offset-1'>
+        <div class = "top-image text-left ml-4">
+        <%= image_tag'cake.png', size:"625x325" ,style:"position: relative;" %>
+            <p style="position:absolute; top:125px; left:170px; color:#FFF; background-color:rgba(0,0,0,0.3);">
+          ようこそ、ながのCAKEへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。</p>
+        </div>
+      　 <div class = "new-arrival">
+          <h3><strong>新着商品</strong></h3>
+          <div class = "new-arrival-contents" style="display:flex; flex-wrap:wrap;">
+           新着商品public/items/indexで共有テンプレート予定
+          </div>
+         </div>
+         <div class = "row justify-content-end">
+          <%= link_to "全ての商品を見る＞",items_path %>
+         </div>
+      </div>
+    </div>
+  </div>

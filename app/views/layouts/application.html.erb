@@ -27,7 +27,7 @@
 <!--会員がログイン-->
           <% if customer_signed_in? %>
             <p>ようこそ、<%= current_customer.last_name %>さん！</p>
-            <li><%= link_to "マイページ", customer_path, class: "header-button btn text-light" %></li>
+            <li><%= link_to "マイページ", customer_my_page_path, class: "header-button btn text-light" %></li>
             <li><%= link_to "商品一覧", items_path, class: "header-button btn text-light" %></li>
             <li><%= link_to "カート", cart_items_path, class: "header-button btn text-light" %></li>
             <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "header-button btn text-light" %></li>
