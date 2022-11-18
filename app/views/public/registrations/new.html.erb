@@ -1,31 +1,64 @@
 <!-- 顧客側 -->
 
-<h2>顧客Sign up</h2>
+<h2>新規会員登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_with model: @customer, url: customer_registration_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label "名前" %>
+    <%= f.text_field :first_name, autocomplete: "first_name", placeholder: "姓" %>
+    <%= f.text_field :last_name, autocomplete: "last_name", placeholder: "名" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label "フリガナ" %>
+    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana", placeholder: "セイ" %>
+    <%= f.text_field :last_name_kana, autocomplete: "last_name_kana", placeholder: "メイ" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "メールアドレス" %>
+    <%= f.email_field :email, autocomplete: "email", placeholder: "tanaka@example.com" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "郵便番号(ハイフンなし)" %>
+    <%= f.text_field :post_code, autocomplete: "post_code", placeholder: "1234567" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "住所" %>
+    <%= f.text_field :address, autocomplete: "address",placeholder: "東京都新宿区西新宿0-0" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "電話番号(ハイフンなし)" %>
+    <%= f.text_field :phone_number, autocomplete: "phone_number", placeholder: "11122223333" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "パスワード" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    (<%= @minimum_password_length %> 文字以上)
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label "パスワード(確認用)" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+
+  </div>
+
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
+
+<h2>既に登録済みの方</h2>
 
 <%= render "public/shared/links" %>
