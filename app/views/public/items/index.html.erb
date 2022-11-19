@@ -1,0 +1,23 @@
+<!-- 商品一覧ページ -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      ジャンル一覧admin/genres/index共有テンプレート予定
+    </div>
+    <div class='col-md-9 offset-1'>
+      <h2 class='d-inline mr-2'>商品一覧</h2><span>(商品の総件数を表示)</span>
+      <div class="item_index">
+        <% @items.each do |item| %>
+        <div class="item_box">
+          <%= image_tag item.get_image %>
+          <p>商品画像</p>
+          <p>商品名<%= item.name %></p>
+          <p>価格<%= item.excluded_price %></p>
+        </div>
+        <% end %>
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
+</div>
