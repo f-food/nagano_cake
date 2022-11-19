@@ -12,8 +12,16 @@
           <tr>
             <th>ジャンル</th>
             <th colspan="3"></th>
-          <tr>
+          </tr>
         </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <th><%= genre.name %></th>
+              <th><%= link_to '編集する', edit_admin_genre_path(genre), class: 'btn-sm btn-success' %></th>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>
