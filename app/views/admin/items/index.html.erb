@@ -1,22 +1,63 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-8 px-sm-0 offset-sm-1">
-      <h2 class="my-5">商品一覧</h2>
+    <div class= col-4>
+      <h4 class="m-4"><span>商品一覧</span></h4>
     </div>
-    <div class="col-sm-8 px-sm-0 text-right mt-5">
-      <%= link_to new_admin_item_path do %>
-      <i class="fas fa-plus fa-2x "></i>
-      <% end %>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-sm-10 offset-1">
-      <%= render 'index' , items: @items%>
-        <%= paginate @items %>
+
+    <div class="col-5"></div>
+
+<!--新規登録への移行ボタン-->
+    <div class="col-3">
+      <p class="my-4"><%= link_to new_admin_item_path do %>
+        <button type="button" class="btn btn-outline-dark rounded-circle p-0"
+        style="width:3rem;height:3rem;">+</button>
+      <% end %></p>
     </div>
   </div>
 </div>
 
 
+<!--一覧項目-->
+<div class="container">
+  <div class="row">
+    <div class="col-11">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税込価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
 
+
+<!--登録内容-->
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= link_to item.name, admin_item_path(item.id) %></td>
+            <td><%=item.price.to_s(:delmited) %> 円</td>
+            <td><%= item.genre.name %></td>
+            <td>
+              <div class="font-weight-bold">
+                <% if item.is_status == true %>
+                  <p class="text text-success">販売中</p>
+                <% else %>
+                  <p class="text text-secondary">販売停止中</p>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+<!--ページネーション-->
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>
