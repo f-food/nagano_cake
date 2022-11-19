@@ -61,4 +61,6 @@ gem 'net-smtp'
 
 gem 'kaminari'
 
+gem'pry-rails'
+
 
