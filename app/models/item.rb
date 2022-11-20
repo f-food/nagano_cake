@@ -1,8 +1,12 @@
 class Item < ApplicationRecord
-  has_many :cart_items, dependent: :destroy
+  has_many :cart_items
   belongs_to :genre
   has_one_attached :image
 
+  #消費税の計算
+  def add_tax_price
+    (self.excluded_price * 1.08).round
+  end
 
   def get_image(width, height)
     unless image.attached?

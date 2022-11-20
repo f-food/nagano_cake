@@ -7,13 +7,14 @@
     </div>
     <div class='col-md-9 offset-1'>
       <h2 class='d-inline mr-2'>商品一覧</h2><span>(商品の総件数を表示)</span>
-      <div class="item_index">
+      <div class="row">
         <% @items.each do |item| %>
-        <div class="item_box">
-          <%= image_tag item.get_image %>
-          <p>商品画像</p>
-          <p>商品名<%= item.name %></p>
-          <p>価格<%= item.excluded_price %></p>
+        <div class="col-md-3">
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image(100,100) %>
+          <% end %>
+          <p>商品名：<%= item.name %></p>
+          <p>価格：¥<%= item.excluded_price %></p>
         </div>
         <% end %>
         <%= paginate @items %>
