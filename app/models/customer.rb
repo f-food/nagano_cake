@@ -4,6 +4,10 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :orders, dependent: :destroy
+  has_many :cart_items
+  has_many :addresses, dependent: :destroy
+
   # 入力フォームのバリデーション
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -18,4 +22,12 @@ class Customer < ApplicationRecord
   # ハイフンなしの１０桁or１１桁のみ入力可能にする
   PHONE_NUMBER_REGEXP = /\A\d{10,11}\z/
   validates :phone_number, presence: true, format: { :with => PHONE_NUMBER_REGEXP }
+
+  def full_name
+    self.last_name + " " + self.first_name
+  end
+
+  def full_name_kana
+    self.last_name_kana + " " + self.first_name_kana
+  end
 end
