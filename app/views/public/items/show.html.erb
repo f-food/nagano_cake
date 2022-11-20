@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      ジャンル一覧admin/genres/index共有テンプレート予定
+    </div>
+    <div  class='col-md-9 offset-1'>
+      <h2>商品詳細</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <%= image_tag 'cake.png', size: "200x150" %>
+        </div>
+        <div class="col-md-8">
+          <h3><strong>商品名</strong></h3>
+          <p>商品説明</p>
+          <p>¥X,XXX</p>
+          <%= form_with model: @cart_item do |f| %>
+            <%= f.select :quantity, [["1", "1"], ["2", "2"], ["3", "3"]], include_blank: "個数選択" %> <!-- カートに入れる個数を選択-->
+            <%= f.submit "カートに入れる", class: 'btn btn-success' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
