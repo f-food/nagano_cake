@@ -1,0 +1,84 @@
+<!-- -カートに商品が入っている場合 -->
+<div class="container">
+    <% if @cart_items.present? %>
+      <div class="row">
+        <div class="col-md-8 mt-5">
+          <h3 class="col-md-6"><span>ショッピングカート</span></h3>
+        </div>
+        <div class="col-md-2 offset-md-2 mt-5">
+          <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger", data: {confirm: "カートを空にしてもよろしいですか？"} %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mx-auto col-md-12 mt-3">
+          <table class="table table-bordered">
+            <thead class="thead-light">
+              <th colspan="3">商品名</th>
+              <th>単価(税込)</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <% @cart_items.each do |cart_item| %>
+                <tr>
+                  <td class="align-middle", colspan="3">
+                    <%= image_tag cart_item.item.get_image(80,50) %>
+                    <%= cart_item.item.name %>
+                  </td>
+                  <td class="align-middle"><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+                  <td class="text-center align-middle">
+                    <%= form_with model: cart_item do |f| %>
+                      <%= f.hidden_field :item_id, value: cart_item.item.id %>
+                      <%= f.select :quantity, *[1..10], selected: cart_item.quantity %>
+                      <%= f.submit "変更", class: "btn btn-success" %>
+                    <% end %>
+                  </td>
+                  <td class="align-middle"><%= cart_item.subtotal.to_i.to_s(:delimited) %></td>
+                  <td class="text-center align-middle">
+                    <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger ", data: {confirm: "削除してもよろしいですか？"} %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 offset-md-1 mt-3">
+          <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
+        </div>
+        <div class="col-md-4 offset-md4 mt-3 float-right">
+          <table class="table table-bordered">
+            <tr>
+              <th class="table-secondary">合計金額</th>
+              <td><%= @total.round.to_s(:delimited) %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 mx-auto mt-5">
+          <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+        </div>
+      </div>
+    <!-- カートに商品が入っていない場合 -->
+    <% else %>
+      <div class="row">
+        <div class="col-md-8 mt-5">
+          <h3 class="col-md-6"><span>ショッピングカート</span></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <h4 class="text-center">ショッピングカートに商品がありません</h4>
+          <p class="text-center">「買い物を続ける」ボタンから商品を選択して、カートに追加してください</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 mx-auto">
+          <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+</div>
