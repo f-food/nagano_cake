@@ -1,6 +1,10 @@
-<div class="row mb-5">
-  <div class="col-md-10 offset-md-1">
-    <h4><span class="title" style="background-color: #f5f5f5">会員情報編集</span></h4>
+<div class='container'>
+  <div class='row'>
+    <div class='pt-3 pl-5 ml-5'>
+      <h4 class='alart alert-secondary'>会員情報編集</h4>
+    </div>
+  </div>
+    <div class='row py-3 col-md-8 align-content-start'>
       <%= form_with url: customers_infomation_path, model: @customer, local:true do |f| %>
         <table class="table table-borderless">
           <tbody>
@@ -36,6 +40,7 @@
             <tr>
               <td class="col-3"></td>
               <td><%= f.submit '変更を保存', class: "btn btn-sm btn-success" %></td>
+              <td><%= link_to "退会する", customers_check_path, class: 'btn btn-danger btn-secondary' %></td>
             </tr>
           </tbody>
         </table>

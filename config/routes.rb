@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     root :to =>"homes#top"
     get "homes/about"=>'homes#about', as: 'about'
     get "customers/unsubscribed"=>'customers#check', as: 'customers/check'
-    get "customers/withdrawal"=>'customers#withdrawal', as: 'customers/withdrawal'
+    patch "customers/withdrawal"=>'customers#withdrawal', as: 'customers/withdrawal'
     get "cart_items/destroy_all"=>'cart_items#destroy_all', as: 'cart_items/destroy_all'
     get "orders/check"=>'orders#check', as: 'orders/check'
     get "orders/complete"=>'orders#complete', as: 'orders/complete'
