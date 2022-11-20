@@ -1,21 +1,21 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-md-10">
       <div class="col1">
         <h4>マイページ</h4>
       </div>
     <div>
-      登録情報
-      <%= link_to "編集", customers_information_edit_path, class: "btn btn-secondary btn-block" %>
+      <strong>登録情報</strong>
+      <%= link_to "編集", customers_information_edit_path, class: "btn btn-success px-3" %>
     </div>
     <table class="table">
       <tr>
         <th>氏名</th>
-        <td><%= @customer.last_name %><%= @customer.first_name %></td>
+        <td><%= @customer.first_name %><%= @customer.last_name %></td>
       </tr>
       <tr>
         <td>カナ</td>
-        <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+        <td><%= @customer.first_name_kana %><%= @customer.last_name_kana %></td>
       </tr>
       <tr>
         <td>郵便番号</td>
@@ -34,14 +34,18 @@
         <td><%= @customer.email %></td>
       </tr>
     </table>
-    <div>
-      配送先
-      <%= link_to "一覧を見る", addresses_path, class: "btn btn-block" %>
     </div>
-    <div>
-      注文履歴
-      <%= link_to "一覧を見る", orders_path, class: "btn btn-secondary btn-block" %>
+  </div>
+  <div class="row py-2">
+    <div class="col-md-5">
+      <strong>配送先</strong>
+      <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary px-3" %>
     </div>
+  </div>
+  <div class="row py-2">
+    <div class="col-md-5">
+      <strong>注文履歴</strong>
+      <%= link_to "一覧を見る", orders_path, class: "btn btn-primary px-3" %>
     </div>
   </div>
 </div>
