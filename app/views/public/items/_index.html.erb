@@ -1,9 +1,9 @@
 <div class="d-flex flex-wrap">
   <% items.each do |items|%>
    <div class="flex-item">
-    <div class="card　border-0">
+    <div class="card border-0">
       <%=link_to item_path(items) do %>
-      <%=image_tag items.image, size: '150x150'%>
+      <%=image_tag items.get_image(150,150) %>
       <%end%><br>
       <%=link_to item_path(items) do %>
        <p class="card-title">
