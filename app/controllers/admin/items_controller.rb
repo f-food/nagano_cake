@@ -16,7 +16,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def edit
