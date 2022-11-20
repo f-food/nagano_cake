@@ -21,8 +21,8 @@
               <td><%= customers.id %></td>
               <td><u>
                 <%= link_to admin_customer_path(customers), :style=>"color:black;" do %>
-                  <%= customers.last_name %>
                   <%= customers.first_name %>
+                  <%= customers.last_name %>
                 <% end %>
               </td></u>
               <td><%= customers.email %></td>
