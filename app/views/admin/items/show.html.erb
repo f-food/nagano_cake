@@ -7,7 +7,7 @@
 <div class="container">
 <div class="row justify-content-center">
   <div class="text-center col-3">
-    <%= image_tag @item.get_image(150,150) %>
+    <%= image_tag @item.get_image(250,250) %>
   </div>
 
   <div class="col-7">
@@ -27,12 +27,12 @@
       <tr>
         <td>税込価格<br>
             (税抜価格)</td>
-        <td><%= @item.price.to_s(:delimited) %> 円</td>
+        <td><%= @item.excluded_price.to_s(:delimited) %> 円</td>
       </tr>
       <tr>
         <td class="col-3">販売ステータス</td>
         <td>
-        　<% if @item.is_active == true %>
+        　<% if @item.is_status == true %>
      　      <p class="text-success font-weight-bold">販売中</p>
     　 　   <% else %>
          　  <p class='text-secondary font-weight-bold'>販売停止中</p>
@@ -43,4 +43,8 @@
   </div>
 </div>
 </div>
+</div>
+
+<div class="row justify-content-center">
+  <%= link_to '編集する', edit_admin_item_path(@item.id), class: 'btn btn-success px-4' %>
 </div>

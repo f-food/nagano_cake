@@ -5,7 +5,7 @@ class Item < ApplicationRecord
 
   #消費税の計算
   def add_tax_price
-    (self.excluded_price * 1.08).round
+    (self.excluded_price * 1.10).round
   end
 
   def get_image(width, height)
