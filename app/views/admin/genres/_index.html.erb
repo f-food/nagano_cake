@@ -8,7 +8,7 @@
     <% genres.each do |genre| %>
     <tr>
      <td>
-     <%= link_to items_path(genre) do %>
+     <%= link_to item_search_path(genre) do %>
       <%= genre.name %>
      <% end %>
      </td>

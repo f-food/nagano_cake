@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     get 'customers/information/edit' => 'customers#edit'
     patch 'customers/infomation' => 'customers#update'
     resources :items, only: [:index, :show]
+     get 'items/search/:id' => 'items#search',as: 'item_search'
     resources :cart_items, only: [:index, :update,:destroy, :create] do
       collection do
         delete "destroy_all" => "cart_items#destroy_all"
