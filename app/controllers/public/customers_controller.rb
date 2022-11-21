@@ -31,7 +31,6 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
   end
 
-
   private
 
   def customer_params
