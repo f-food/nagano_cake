@@ -3,29 +3,29 @@
     <div class="col-md-2">
 			<%= render 'admin/genres/index', genres: @genres %>
 		</div>
-		  <div class='col-md-9 offset-1'>
-			<h2><%= @genre.name %>一覧(全<%= @genre.items.count %>件)</h2>
+	<div class='col-md-9 offset-1'>
+		<h2><%= @genre.name %>一覧(全<%= @genre.items.count %>件)</h2>
 			<div class="text-center">
 			  <%= paginate @items %>
 			</div>
-			<div class="d-flex flex-wrap">
+		<div class="d-flex flex-wrap">
 			 <% @genre_items.each do |item| %>
-			 <div class="flex-item">
-        <div class="card　border-0">
-  		   <%=link_to item_path(item) do %>
-  		   <div class="col-xs-3">
-  				 <%=image_tag item.image, size: '150x150'%>
-  				 <p class="card-title">
-  				   <%= item.name %>
-  				 </p>
-  				 <p class="card-text">
-  				   ¥<%= item.excluded_price %>
-  				 </p>
-  			 </div>
-        </div>
-  		 </div>
-  			 <% end %>
-			<% end %>
+  			 <div class="flex-item">
+          <div class="card　border-0">
+    		   <%=link_to item_path(item) do %>
+    		   <div class="col-xs-3">
+    				 <%=image_tag item.image, size: '150x150'%>
+    				 <p class="card-title">
+    				   <%= item.name %>
+    				 </p>
+    				 <p class="card-text">
+    				   ¥<%= item.excluded_price %>
+    				 </p>
+    			 </div>
+          </div>
+    		 </div>
+  			  <% end %>
+			 <% end %>
 		</div>
 	</div>
  </div>
