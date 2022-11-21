@@ -18,7 +18,7 @@ class Public::OrdersController < ApplicationController
         #@order_detail.item_id = cart_item.item_id #商品idの格納
         #@order_detail.quantity = cart_item.quantity #商品の個数の格納
         #@order_detail.inclusive_price = (cart_item.item.excluded_price * 1.08).floor #価格の格納
-        #@order_detail.save #注文詳細の
+        #@order_detail.save #注文詳細の保存
 
       if params[:order][:address_number] == "3"
         @shipping_address.save
