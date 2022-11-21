@@ -14,11 +14,11 @@ class Public::OrdersController < ApplicationController
     @order.save
     #　注文詳細実装後
       #@cart_items.each do |cart_item|
-        #@order_detail = @order.order_detail.new
-        #@order_detail.item_id = cart_item.item_id
-        #@order_detail.quantity = cart_item.quantity
-        #@order_detail.inclusive_price = (cart_item.item.excluded_price * 1.08).floor
-        #@order_detail.save
+        #@order_detail = @order.order_detail.new #注文詳細の作成
+        #@order_detail.item_id = cart_item.item_id #商品idの格納
+        #@order_detail.quantity = cart_item.quantity #商品の個数の格納
+        #@order_detail.inclusive_price = (cart_item.item.excluded_price * 1.08).floor #価格の格納
+        #@order_detail.save #注文詳細の
 
       if params[:order][:address_number] == "3"
         @shipping_address.save
