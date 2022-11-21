@@ -1,50 +1,55 @@
 <div class="container">
-  <h3 class="text-center my-5">商品編集</h3>
-  <div class="row">
-    <div class="col-8 offset-2 mb-5">
-      <%= form_with model: @item, url:admin_item_path,local: true do |f| %>
-      <table>
+  <div class="m-4">商品編集画面</div>
+</div>
 
-        <tr>
-          <div class="form-group">
-            <%= f.label :商品画像, class:"form_label"%>
-            <%= f.attachment_field :image,class:"mb-3 ml-3"%>
-          </div>
-        </tr>
+<%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
 
-        <tr>
-          <div class="form-group">
-            <%= f.label :商品名, class:"form_label"%>
-            <%= f.text_field :name, placeholder:"商品名",class:"form-control mb-3" %>
-          </div>
-        </tr>
+<div class="container">
+  <div class="col-2">
+  </div>
 
-        <tr>
-          <div class="form-group">
-            <%= f.label :商品説明, class:"form_label" %>
-            <%= f.text_area :introduction, size: "50×5", placeholder:"ここに説明文を記述します",class:"form-control-lg mb-3" %>
-          </div>
-        </tr>
+  <div class="col-7">
+    <table>
+      <tr>
+        <td class="col-2">商品画像</td>
+        <td><%= f.file_field :image, accept: "image/*" %></td>
+      </tr>
 
-        <tr>
-          <div class="form-group">
-            <%= f.label :ジャンル, class:"form_label"
-            <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--",class:"form-select" %>
-          </div>
-        </tr>
+      <tr>
+        <td>商品名</td>
+        <td><%= f.text_field :name,placeholder: "商品名" %></td>
+      </tr>
 
-        <tr>
-          <div class="form-group">
-            <%= f.label :税抜価格,class:"form_label" %>
-            <%= f.text_field :price,size:"15"%>円
-          </div>
-        </tr>
+      <tr>
+        <td>商品説明</td>
+        <td><%= f.text_area :caption,placeholder: "ここに説明を記述します" %></td>
+      </tr>
 
+      <tr>
+        <td>ジャンル</td>
+        <td><%= f.collection_select :genre_id, Genre.all, :id, :name, incode_blake: "-- 選択してください --" %></td>
+      </tr>
 
-        </tr>
-          </div>
-        </tr>
-      </table>
-    </div>
+      <tr>
+        <td>税抜価格</td>
+        <td><%= f.text_field :excluded_price,placeholder: "1000" %>円</td>
+      </tr>
+
+      <tr>
+        <td class="col-3">販売ステータス</td>
+        <td>
+          <%= f.radio_button :is_status, true %>
+          <%= f.label :is_status, "販売中" %>
+          <%= f.radio_button :is_status, false %>
+          <%= f.label :is_status, "販売停止中" %>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>
+
+<div class="row justify-content-center">
+  <%= f.submit '変更を保存',class: 'btn btn-success px-4' %>
+</div>
+
+<% end %>
