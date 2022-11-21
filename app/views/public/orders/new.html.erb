@@ -38,7 +38,7 @@
             <%= f.label :address, "登録登録済み住所から選択" %>
           </div>
           <div class="form-group ml-5">
-            <%= f.collection_select :customer_id, @address, :id, :postcode_and_address, {prompt: "選択してください"} %>
+            <%= f.collection_select :customer_id, @addresses, :id, :post_code_and_address, {prompt: "選択してください"} %>
           </div>
         </div>
         <div>

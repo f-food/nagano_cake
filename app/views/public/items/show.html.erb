@@ -13,16 +13,16 @@
           <h3><strong><%= @item.name %></strong></h3>
           <p><%= @item.caption %></p>
           <p>¥<%= @item.add_tax_price.to_s(:delimited) %><span>(税込)</span></p>
-          <!--% if @item.is_status == true -->
+          <% if @item.is_status == true %>
             <%= form_with model: @cart_item, local: :true do |f| %>
               <%= f.hidden_field :item_id, value: @item.id %>
               <%= f.label :quantity, "個数選択" %>
                 <%= f.select :quantity, *[1..10] %>
               <%= f.submit "カートに入れる", class: "btn btn-success" %>
             <% end %>
-          <!--% else %-->
-            <!-- <h3><span class="badge badge-danger py-3">販売停止中</span></h3>-->
-          <!--% end %-->
+          <% else %>
+            <h3><span class="badge badge-danger py-3">販売停止中</span></h3>
+          <% end %>
         </div>
       </div>
     </div>
