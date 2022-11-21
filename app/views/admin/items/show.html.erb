@@ -1,1 +1,46 @@
+<div class="container">
+  <h4 class="m-4">商品詳細</span></h4>
+</div>
 
+<br>
+
+<div class="container">
+<div class="row justify-content-center">
+  <div class="text-center col-3">
+    <%= image_tag @item.get_image(150,150) %>
+  </div>
+
+  <div class="col-7">
+    <table class="table table-borderless">
+      <tr>
+        <td class="col-3">商品名</td>
+        <td><%= @item.name %></td>
+      </tr>
+      <tr>
+        <td>商品説明</td>
+        <td><%= @item.caption %></td>
+      </tr>
+      <tr>
+       <td>ジャンル</td>
+        <td><%= @item.genre.name %></td>
+      </tr>
+      <tr>
+        <td>税込価格<br>
+            (税抜価格)</td>
+        <td><%= @item.price.to_s(:delimited) %> 円</td>
+      </tr>
+      <tr>
+        <td class="col-3">販売ステータス</td>
+        <td>
+        　<% if @item.is_active == true %>
+     　      <p class="text-success font-weight-bold">販売中</p>
+    　 　   <% else %>
+         　  <p class='text-secondary font-weight-bold'>販売停止中</p>
+    　　    <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+</div>

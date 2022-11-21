@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2">
-      ジャンル一覧admin/genres/index共有テンプレート予定
+      <%= render 'admin/genres/index', genres: @genres %>
     </div>
     <div class='col-md-9 offset-1'>
       <h2 class='d-inline mr-2'>商品一覧</h2><span>(商品の総件数を表示)</span>

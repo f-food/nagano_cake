@@ -1,13 +1,18 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
-  
+
+  def index
+    @orders = Order.page(params[:page]).per(10)
+  end
+
+
   def show
     @order = Order.find(params[:id])
     @order_detail = @order.order_details
     @total = @order_detail.inject(0) { |sum, item| sum + item.price * item.amount }
-    @postage = 800  
+    @postage = 800
   end
-  
+
   def update
     @order = Order.find(params[:id])
     @order_details = @order.order_items
@@ -22,11 +27,11 @@ class Admin::OrdersController < ApplicationController
       render "show"
     end
   end
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:status)
   end
-    
+
 end
