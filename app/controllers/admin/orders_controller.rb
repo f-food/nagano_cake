@@ -15,7 +15,7 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order_details = @order.order_items
+    @order_details = @order.order_details
     if  @order.update(order_params)
       if @order.status == "waiting_for_payment"
         @order_details.update(making_status: "production_not_allowed")

@@ -21,11 +21,11 @@
           <tr>
             <td><u>
               <%= link_to admin_order_path(order), class: "text-dark" do %>
-                <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+                <%= order.created_at.strftime('%Y/%m/%d %H:%M') %>
               <% end %>
             </u></td>
-            <td><%= order.name %></td>
-            <td><%= order.order_details.sum(:amount) %></td>
+            <td><%= order.full_name %></td>
+            <td>後で追加</td>
             <td><%= order.status_i18n %></td>
           </tr>
           <% end %>
