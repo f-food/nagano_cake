@@ -61,6 +61,16 @@ class Public::OrdersController < ApplicationController
     @shipping_cost = 800
   end
 
+  def index
+    @orders = current_customer.orders
+  end
+  
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+    @total = @order_details.inject(0) { |sum, item| sum + item.subtotal }
+  end
+  
   def complete
   end
 
