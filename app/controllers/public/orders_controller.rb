@@ -12,12 +12,12 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.all
     @shipping_address = current_customer.addresses.new(address_params)
     if @order.save
-    　#注文詳細実装後
       @cart_items.each do |cart_item|
-        @order_detail = @order.order_detail.new #注文詳細の作成
+        @order_detail = @order.order_details.new #注文詳細の作成
         @order_detail.item_id = cart_item.item_id #商品idの格納
         @order_detail.quantity = cart_item.quantity #商品の個数の格納
         @order_detail.inclusive_price = (cart_item.item.excluded_price * 1.10).floor #価格の格納
+        #@order_detail.making_status =
         @order_detail.save #注文詳細の保存。
       end
       if params[:order][:address_number] == "3"
