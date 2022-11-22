@@ -6,8 +6,8 @@ class Order < ApplicationRecord
     customer.first_name + " " + customer.last_name
   end
 
-  def post_code_and_address
-    self.post_code + '(' + self.address.to_s + ')'
+  def full_adresses
+    customer.post_code + customer.address
   end
 
   enum payment_method: {credit_card: 0, transfer: 1 }

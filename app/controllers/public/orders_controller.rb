@@ -36,13 +36,13 @@ class Public::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.name = current_customer.full_name
     elsif params[:order][:address_number] == "2"
-      if params[:order][:customer_id] == ""
+      if params[:order][:ship_id] == ""
         redirect_to new_order_path
       else
-        ship = Address.find(params[:order][:customer_id])
+        ship = Address.find(params[:order][:ship_id])
         @order.post_code = ship.post_code
         @order.address = ship.address
-        @order.name = ship.attention_name
+        @order.attention_name = ship.attention_name
       end
     elsif params[:order][:address_number] == "3"
       @order.post_code = params[:order][:post_code]
