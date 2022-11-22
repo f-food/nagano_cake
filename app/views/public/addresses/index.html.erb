@@ -1,0 +1,43 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-10">
+      <div class="col1">
+        <h4>登録先一覧</h4>
+        <div>
+          <%= form_with model:@address,url:addresses_path,method: :post do |f| %>
+            <strong>郵便番号（ハイフンなし）</strong>
+            <%= f.text_field :post_code %></br>
+            <strong>住所</strong>
+            <%= f.text_field :address  %></br>
+            <strong>宛名</strong>
+            <%= f.text_field :attention_name %></br>
+            <%= f.submit'新規登録', class:"btn btn-sm btn-success mt-3 mb-3" %>
+          <% end %>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @addresses.each do |address| %>
+        <tbody>
+          <tr>
+            <td><%= address.post_code %></td>
+            <td><%= address.address %></td>
+            <td><%= address.attention_name %></td>
+            <td>
+              <%= link_to '編集する',edit_address_path(address.id) ,class:"btn btn-sm btn-success " %>
+              <%= link_to'削除する',address_path(address.id),method: :delete ,class:"btn btn-sm btn-danger" %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
