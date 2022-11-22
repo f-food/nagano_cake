@@ -5,18 +5,14 @@ class Admin::OrderDetailsController < ApplicationController
 def update
     @order_detail = OrderDetail.find(params[:id])
     @order = @order_detail.order
-    if @order_detail.update(order_detail_params)
-      if @order_detail.making_status == "under_construction"
-        @order.update(status: "production")
-      elsif @order.order_details.all?{|order_detail|order_detail.making_status == "production_completed"}
-        @order.update(status: "preparing_to_ship")
-      end
-      redirect_to admin_order_path(@order)
-    else
-      render "show"
+    @order_detail.update(order_detail_params)#(making_status: params[:order_detail][:making_status])
+    if @order_detail.making_status == "making_now"
+      @order.update(status: 2)
+    elsif @order.order_details.count == @order.order_details.where(making_status: "making_comp").count
+      @order.update(status: 3)
     end
-end
-
+    redirect_to admin_order_path(@order)
+  end
   private
 
   def order_detail_params

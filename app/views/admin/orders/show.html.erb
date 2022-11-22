@@ -55,12 +55,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @order_detail.each do |order_detail| %>
+          <% @order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.item.tax_price %></td>
+              <td><%= order_detail.item.lnclusive_price %></td>
               <td><%= order_detail.quantity %></td>
-              <td><%= order_detail.price*order_detail.amount %></td>
+              <td><%= order_detail.subtotal.to_s(:delimited) %></td>
               <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), local: true do |f| %>
                 <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert, {prompt: false} %></td>
                 <td><%= f.submit "更新", class: "btn btn-success" %></td>
@@ -78,11 +78,11 @@
         </tr>
         <tr>
           <th>送料</th>
-          <td><%= @postage %>円</td>
+          <td><%= @shipping_cost %>円</td>
         </tr>
         <tr>
           <th>請求金額合計</th>
-          <td><%= @total + @postage %>円</td>
+          <td><%= @total + @shipping_cost %>円</td>
         </tr>
       </table>
     </div>

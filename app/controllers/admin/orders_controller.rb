@@ -8,9 +8,9 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_detail = @order.order_details
-    @total = @order_detail.inject(0) { |sum, item| sum + item.price * item.amount }
-    @postage = 800
+    @order_details = OrderDetail.all
+    @total = @order_details.inject(0) { |sum, item| sum + item.subtotal }
+    @shipping_cost = 800
   end
 
   def update
