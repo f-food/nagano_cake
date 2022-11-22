@@ -1,9 +1,8 @@
 <div class="container">
-  <h4 class="m-4">商品詳細</span></h4>
+  <h3 class="m-4"><span style="background-color:#eee">商品詳細</span></h3>
 </div>
 
 <br>
-
 <div class="container">
 <div class="row justify-content-center">
   <div class="text-center col-3">
@@ -27,16 +26,18 @@
       <tr>
         <td>税込価格<br>
             (税抜価格)</td>
-        <td><%= @item.excluded_price.to_s(:delimited) %> 円</td>
+        <td><%= @item.with_tax_price.to_s(:delimited) %>
+            <span>(<%= @item.excluded_price.to_s(:delimited) %>)</span>円
+        </td>
       </tr>
       <tr>
         <td class="col-3">販売ステータス</td>
         <td>
-        　<% if @item.is_status == true %>
-     　      <p class="text-success font-weight-bold">販売中</p>
-    　 　   <% else %>
-         　  <p class='text-secondary font-weight-bold'>販売停止中</p>
-    　　    <% end %>
+          <% if @item.is_status == true %>
+            <p class="text-success font-weight-bold">販売中</p>
+          <% else %>
+            <p class='text-secondary font-weight-bold'>販売停止中</p>
+          <% end %>
         </td>
       </tr>
     </table>

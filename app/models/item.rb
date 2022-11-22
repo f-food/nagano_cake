@@ -4,7 +4,15 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_one_attached :image
 
-  #消費税の計算
+
+  validates :image, presence: true
+  validates :name, presence: true
+  validates :caption, presence: true
+  validates :genre_id, presence: true
+  validates :excluded_price, presence: true
+  validates :is_status, presence: true
+
+
   def add_tax_price
     (self.excluded_price * 1.10).round
   end
@@ -19,9 +27,9 @@ class Item < ApplicationRecord
 
 
 
-#消費財のメソッド
+#消費税のメソッド
   def with_tax_price
-    (price * 1.1).floor
+    (excluded_price * 1.1).floor
   end
 
 end
