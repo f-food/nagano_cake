@@ -11,23 +11,23 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.orders.new(order_params)
     @cart_items = current_customer.cart_items.all
     @shipping_address = current_customer.addresses.new(address_params)
-    @order.save
-    #　注文詳細実装後
-      #@cart_items.each do |cart_item|
-        #@order_detail = @order.order_detail.new #注文詳細の作成
-        #@order_detail.item_id = cart_item.item_id #商品idの格納
-        #@order_detail.quantity = cart_item.quantity #商品の個数の格納
-        #@order_detail.inclusive_price = (cart_item.item.excluded_price * 1.10).floor #価格の格納
-        #@order_detail.save #注文詳細の保存
-      #end
+    if @order.save
+    　#注文詳細実装後
+      @cart_items.each do |cart_item|
+        @order_detail = @order.order_detail.new #注文詳細の作成
+        @order_detail.item_id = cart_item.item_id #商品idの格納
+        @order_detail.quantity = cart_item.quantity #商品の個数の格納
+        @order_detail.inclusive_price = (cart_item.item.excluded_price * 1.10).floor #価格の格納
+        @order_detail.save #注文詳細の保存。
+      end
       if params[:order][:address_number] == "3"
         @shipping_address.save
       end
       @cart_items.destroy_all
       redirect_to complete_orders_path
-      #else
+    else
       #render :new
-    #end
+    end
   end
 
   def check
@@ -64,13 +64,13 @@ class Public::OrdersController < ApplicationController
   def index
     @orders = current_customer.orders
   end
-  
+
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
     @total = @order_details.inject(0) { |sum, item| sum + item.subtotal }
   end
-  
+
   def complete
   end
 
