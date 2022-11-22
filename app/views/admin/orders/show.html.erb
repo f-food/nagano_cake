@@ -58,9 +58,9 @@
           <% @order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.item.lnclusive_price %></td>
+              <td><%= order_detail.inclusive_price %></td>
               <td><%= order_detail.quantity %></td>
-              <td><%= order_detail.subtotal.to_s(:delimited) %></td>
+              <td><%= order_detail.inclusive_price*order_detail.quantity %></td>
               <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), local: true do |f| %>
                 <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert, {prompt: false} %></td>
                 <td><%= f.submit "更新", class: "btn btn-success" %></td>

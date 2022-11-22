@@ -8,8 +8,8 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_details = OrderDetail.all
-    @total = @order_details.inject(0) { |sum, item| sum + item.subtotal }
+    @order_details = @order.order_details
+    @total = @order_details.inject(0) { |sum, item| sum + item.inclusive_price * item.quantity }
     @shipping_cost = 800
   end
 
