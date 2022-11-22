@@ -1,15 +1,16 @@
 <div class="container">
-  <div class="m-4">商品編集画面</div>
+<h3 class="m-4"><span style="background-color:#eee">商品編集</span></h3>
 </div>
 
 <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
 
 <div class="container">
+<div class="row justify-content-center">
   <div class="col-2">
   </div>
 
   <div class="col-7">
-    <table>
+    <table class="table table-borderless">
       <tr>
         <td class="col-2">商品画像</td>
         <td><%= f.file_field :image, accept: "image/*" %></td>
@@ -17,12 +18,12 @@
 
       <tr>
         <td>商品名</td>
-        <td><%= f.text_field :name,placeholder: "商品名" %></td>
+        <td><%= f.text_field :name,placeholder: "商品名", :size=>"30x10" %></td>
       </tr>
 
       <tr>
         <td>商品説明</td>
-        <td><%= f.text_area :caption,placeholder: "ここに説明を記述します" %></td>
+        <td><%= f.text_area :caption,placeholder: "ここに説明を記述します", :size=>"30x7" %></td>
       </tr>
 
       <tr>
@@ -32,7 +33,7 @@
 
       <tr>
         <td>税抜価格</td>
-        <td><%= f.text_field :excluded_price,placeholder: "1000" %>円</td>
+        <td><%= f.text_field :excluded_price,placeholder: "1000", :size=>"10x10" %>円</td>
       </tr>
 
       <tr>
