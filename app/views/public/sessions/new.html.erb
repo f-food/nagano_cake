@@ -3,13 +3,14 @@
 <h2>ログイン</h2>
 
 <%= form_with model: @customer, url: session_path(resource_name), local: true do |f| %>
+
   <div class="field">
-    <%= f.label "メールアドレス" %>
+    <%= f.label :email, "メールアドレス" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "tanaka@example.com" %>
   </div>
 
   <div class="field">
-    <%= f.label "パスワード" %>
+    <%= f.label :password, "パスワード" %>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 

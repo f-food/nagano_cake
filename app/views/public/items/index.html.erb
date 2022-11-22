@@ -6,15 +6,15 @@
       <%= render 'admin/genres/index', genres: @genres %>
     </div>
     <div class='col-md-9 offset-1'>
-      <h2 class='d-inline mr-2'>商品一覧</h2><span>(商品の総件数を表示)</span>
+      <h2 class='d-inline mr-2'>商品一覧</h2><span>(全<%= @items_count %>件)</span>
       <div class="row">
         <% @items.each do |item| %>
         <div class="col-md-3">
           <%= link_to item_path(item.id) do %>
-            <%= image_tag item.get_image(100,100) %>
+            <%= image_tag item.get_image(150,150) %>
           <% end %>
           <p>商品名：<%= item.name %></p>
-          <p>価格：¥<%= item.excluded_price %></p>
+          <p>価格：¥<%= item.excluded_price.to_s(:delimited) %></p>
         </div>
         <% end %>
         <%= paginate @items %>
