@@ -8,14 +8,14 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_detail = @order.order_details
-    @total = @order_detail.inject(0) { |sum, item| sum + item.price * item.amount }
-    @postage = 800
+    @order_details = OrderDetail.all
+    @total = @order_details.inject(0) { |sum, item| sum + item.subtotal }
+    @shipping_cost = 800
   end
 
   def update
     @order = Order.find(params[:id])
-    @order_details = @order.order_items
+    @order_details = @order.order_details
     if  @order.update(order_params)
       if @order.status == "waiting_for_payment"
         @order_details.update(making_status: "production_not_allowed")
