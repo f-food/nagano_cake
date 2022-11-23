@@ -10,7 +10,6 @@ class Public::OrdersController < ApplicationController
   def create
     @order = current_customer.orders.new(order_params)
     @cart_items = current_customer.cart_items.all
-    @shipping_address = current_customer.addresses.new(address_params)
     if @order.save
       @cart_items.each do |cart_item|
         @order_detail = @order.order_details.new #注文詳細の作成
@@ -20,6 +19,7 @@ class Public::OrdersController < ApplicationController
         @order_detail.save #注文詳細の保存。
       end
       if params[:order][:address_number] == "3"
+        @shipping_address = current_customer.addresses.new(address_params)
         @shipping_address.save
       end
       @cart_items.destroy_all
@@ -47,7 +47,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:address_number] == "3"
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
-      @order.name = params[:order][:name]
+      @order.name = params[:order][:attention_name]
       if params[:order][:post_code] == "" || params[:order][:address] == "" || params[:order][:name] == ""
         redirect_to new_order_path
       end
