@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   validates :caption, presence: true
   validates :genre_id, presence: true
   validates :excluded_price, presence: true
-  validates :is_status, presence: true
+  validates :is_status, inclusion: [true, false]
 
 
   def add_tax_price
@@ -23,13 +23,6 @@ class Item < ApplicationRecord
       image.attach(io: File.open(file_path),filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image.variant(resize_to_limit: [width,height]).processed
-  end
-
-
-
-#消費税のメソッド
-  def with_tax_price
-    (excluded_price * 1.1).floor
   end
 
 end

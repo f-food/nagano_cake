@@ -26,7 +26,7 @@
       <tr>
         <td>税込価格<br>
             (税抜価格)</td>
-        <td><%= @item.with_tax_price.to_s(:delimited) %>
+        <td><%= @item.add_tax_price.to_s(:delimited) %>
             <span>(<%= @item.excluded_price.to_s(:delimited) %>)</span>円
         </td>
       </tr>
