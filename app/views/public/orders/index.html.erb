@@ -31,7 +31,7 @@
                 <% end %>
               </td>
               <td>
-                <%= order.total_payment %>
+                <%= order.total_payment.to_s(:delimited) %>
               </td>
               <td>
                 <%= order.status_i18n %>

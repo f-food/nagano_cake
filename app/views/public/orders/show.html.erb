@@ -38,9 +38,9 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= @total.to_s(:delimited) %></td>
-          <td><%= @order.shipping_cost %>円</td>
-          <td><%= @order.total_payment.to_s(:delimited) %>円</td>
+          <td><%=@order.total_payment.to_s(:delimited)%></td>
+          <td><%=@order.shipping_cost.to_s(:delimited) %></td>
+          <td><% total_price=@order.total_payment+@order.shipping_cost %><%= total_price.to_s(:delimited)%></td>
         </tr>
       </tbody>
     </table>
@@ -60,13 +60,14 @@
       </thead>
       <tbody>
         <% @order_details.each do |order_detail| %>
-          <tr>
-            <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.price %>円</td>
-            <td><%= order_detail.amount %></td>
-            <td><%= order_detail.price * order_detail.amount %></td>
-          </tr>
-        <% end %>
+       <tr>
+         <td><%= order_detail.item.name%></td>
+         <td><%= order_detail.item.add_tax_price.to_s(:delimited) %></td>
+         <td><%= order_detail.quantity %></td>
+         <% total_price= order_detail.quantity * order_detail.item.add_tax_price %>
+         <td><%= total_price.to_s(:delimited) %> </td
+       </tr>
+       <% end %>
       </tbody>
     </table>
     </div>
