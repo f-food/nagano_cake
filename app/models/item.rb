@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   validates :caption, presence: true
   validates :genre_id, presence: true
   validates :excluded_price, presence: true
-  validates :is_status, presence: true
+  validates :is_status, inclusion: [true, false]
 
 
   def add_tax_price
