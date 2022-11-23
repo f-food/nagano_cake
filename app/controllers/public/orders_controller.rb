@@ -4,7 +4,7 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @customer = Customer.find(current_customer.id)
-    @addresses = current_customer.addresses.all
+    @addresses = Address.where(customer_id: current_customer.id)#current_customer.addresses.all
   end
 
   def create
@@ -18,14 +18,10 @@ class Public::OrdersController < ApplicationController
         @order_detail.inclusive_price = (cart_item.item.excluded_price * 1.10).floor #価格の格納
         @order_detail.save #注文詳細の保存。
       end
-      if params[:order][:address_number] == "3"
-        @shipping_address = current_customer.addresses.new(address_params)
-        @shipping_address.save
-      end
       @cart_items.destroy_all
       redirect_to complete_orders_path
     else
-      #render :new
+      render :new
     end
   end
 
@@ -42,9 +38,11 @@ class Public::OrdersController < ApplicationController
         ship = Address.find(params[:order][:ship_id])
         @order.post_code = ship.post_code
         @order.address = ship.address
-        @order.attention_name = ship.attention_name
+        @order.name = ship.attention_name
       end
     elsif params[:order][:address_number] == "3"
+      address_new = current_customer.addresses.new(address_params)
+      address_new.save
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:attention_name]
@@ -80,7 +78,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def address_params
-    params.require(:order).permit(:attention_name, :address, :post_code, :customer_id)
+    params.require(:order).permit(:attention_name, :address, :post_code)
   end
 
 end
