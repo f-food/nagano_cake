@@ -2,12 +2,14 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_details,dependent: :destroy
 
+  POST_CODE_REGEXP = /\A\d{7}\z/
+  validates :post_code, presence: true, format: { :with => POST_CODE_REGEXP }
+  validates :address, presence: true
+  validates :name, presence: true
+  validates :total_payment, presence: true
+
   def full_name
     customer.first_name + " " + customer.last_name
-  end
-
-  def post_code_and_address
-    self.post_code + '(' + self.address.to_s + ')'
   end
 
   enum payment_method: {credit_card: 0, transfer: 1 }
