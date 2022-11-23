@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row pt-4 pb-4">
     <div class="col-6">
+      <%= form_with model: @genre, url: admin_genres_path do |f| %>
       <table class="table table-borderless">
-        <%= form_with model: @genre, url: admin_genres_path do |f| %>
       <tr>
         <td><%= f.label :name, "ジャンル名" %></td>
         <td><%= f.text_field :name, class:'form-control' %></td>
