@@ -10,13 +10,13 @@
         </strong>さんの会員詳細</span>
       </h2>
 
-  　<div class='row'>
-    　<div class='col-md-7'>
-      　<table class="table table-borderless">
-        　<tr>
+    <div class='row'>
+      <div class='col-md-7'>
+        <table class="table table-borderless">
+          <tr>
           <th>会員ID</th>
           <td><%= @customer.id %></td>
-        　</tr>
+          </tr>
         <tr>
           <th>氏名</th>
           <td>
@@ -47,7 +47,7 @@
           <th>メールアドレス</th>
           <td><%= @customer.email %></td>
         </tr>
-　　　　<tr>
+        <tr>
           <th>会員ステータス</th>
           <% if @customer.is_deleted %>
             <td class="text-secondary">退会</td>
