@@ -8,7 +8,7 @@
         <tr>
           <th>購入者</th>
           <td><u>
-            <%= link_to admin_customer_path(@order), class: "text-dark" do %>
+            <%= link_to admin_customer_path(id: @order.customer_id), class: "text-dark" do %>
               <%= @order.customer.first_name %>
               <%= @order.customer.last_name %>
             <% end %>
