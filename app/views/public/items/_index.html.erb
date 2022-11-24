@@ -1,5 +1,6 @@
 <div class="d-flex flex-wrap">
   <% items.each do |items|%>
+  
     <div class="w-25 p-1">
       <%=link_to item_path(items) do %>
       <%=image_tag items.get_image(160,120), class: "w-100" %>
