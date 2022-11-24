@@ -1,9 +1,9 @@
 <div class="d-flex flex-wrap">
   <% items.each do |items|%>
-   <div class="flex-item">
-    <div class="card border-0">
+  
+    <div class="w-25 p-1">
       <%=link_to item_path(items) do %>
-      <%=image_tag items.get_image(150,150) %>
+      <%=image_tag items.get_image(160,120), class: "w-100" %>
       <%end%><br>
       <%=link_to item_path(items) do %>
        <p class="card-title">
@@ -14,6 +14,6 @@
        ￥<%=items.excluded_price%><br>
       </p>
     </div>
-   </div>
+
   <% end %>
 </div>
