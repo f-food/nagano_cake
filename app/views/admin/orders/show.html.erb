@@ -2,13 +2,13 @@
   <div class='row'>
     <div class='col-md-12'>
       <h2>
-      　<span style="background-color:#eee">注文履歴詳細</span>
+        <span style="background-color:#eee">注文履歴詳細</span>
       </h2>
       <table class="table table-borderless">
-      　<tr>
-      　　<th>購入者</th>
-        　<td><u>
-        　　<%= link_to admin_customer_path(id: @order.customer_id), class: "text-dark" do %>
+        <tr>
+          <th>購入者</th>
+          <td><u>
+            <%= link_to admin_customer_path(id: @order.customer_id), class: "text-dark" do %>
             <%= @order.customer.first_name %>
             <%= @order.customer.last_name %>
             <% end %>
@@ -34,10 +34,10 @@
         <tr>
           <th>注文ステータス</th>
           <td>
-          　<%= form_with model: @order, url: admin_order_path do |f| %>
+            <%= form_with model: @order, url: admin_order_path do |f| %>
             <%= f.select :status, Order.statuses_i18n.invert, {prompt: false} %>
             <%= f.submit "更新", class: "btn btn-success ml-5" %>
-          　<% end %>
+            <% end %>
           </td>
         </tr>
       </table>
