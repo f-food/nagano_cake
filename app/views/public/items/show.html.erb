@@ -4,25 +4,29 @@
       <%= render 'admin/genres/index', genres: @genres %>
     </div>
     <div  class='col-md-9 offset-1'>
-      <h2>商品詳細</h2>
       <div class="row">
         <div class="col-md-4">
-          <%= image_tag @item.get_image(200,200) %>
+          <%= image_tag @item.get_image(220,200) %>
         </div>
         <div class="col-md-8">
           <h3><strong><%= @item.name %></strong></h3>
           <p><%= @item.caption %></p>
-          <p>¥<%= @item.add_tax_price.to_s(:delimited) %><span>(税込)</span></p>
-          <% if @item.is_status == true %>
-            <%= form_with model: @cart_item, local: :true do |f| %>
-              <%= f.hidden_field :item_id, value: @item.id %>
-              <%= f.label :quantity, "個数選択" %>
-                <%= f.select :quantity, *[1..10] %>
-              <%= f.submit "カートに入れる", class: "btn btn-success" %>
+          <h4 class="d-inline"><strong>¥<%= @item.add_tax_price.to_s(:delimited) %></strong></h4><span> (税込)</span>
+          <div class="form mt-3">
+            <% if @item.is_status == true %>
+              <%= form_with model: @cart_item, local: :true do |f| %>
+                <%= f.hidden_field :item_id, value: @item.id %>
+                <%= f.label :quantity, "個数選択" %>
+                  <%= f.select :quantity, *[1..10] %>
+                <%= f.submit "カートに入れる", class: "btn btn-success" %>
+              <% end %>
+            <% else %>
+              <h3><span class="badge badge-danger py-3">販売停止中</span></h3>
             <% end %>
-          <% else %>
-            <h3><span class="badge badge-danger py-3">販売停止中</span></h3>
-          <% end %>
+            <div class="back float-right">
+              <%= link_to "商品一覧に戻る", :back %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
