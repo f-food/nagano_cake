@@ -1,6 +1,6 @@
 <h1 class="text-center">ご注文ありがとうございました!</h1>
 <h2 class="text-center">
-  <%= link_to orders_path do %>
-    <p>注文履歴を見る</p>
+  <%= link_to order_path(id: @order)do %>
+    注文詳細を見る
   <% end %>
 </h2>

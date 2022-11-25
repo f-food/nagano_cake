@@ -68,6 +68,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
+    # ordersテーブル内の現在ログインしている会員の一番最後のレコードを取得する。
+    @order = Order.where(customer_id: current_customer.id).last
   end
 
   private
