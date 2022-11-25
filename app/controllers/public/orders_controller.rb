@@ -4,7 +4,11 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @customer = Customer.find(current_customer.id)
-    @addresses = Address.where(customer_id: current_customer.id)#current_customer.addresses.all
+    cart_items = current_customer.cart_items.all
+    # カート内が空の場合に注文画面へアクセスした時
+    if cart_items.blank?
+      redirect_to items_path
+    end
   end
 
   def create
