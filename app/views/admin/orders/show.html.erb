@@ -2,15 +2,15 @@
   <div class='row'>
     <div class='col-md-12'>
       <h2>
-        <span style="background-color:#eee">注文履歴詳細</span>
+      　<span style="background-color:#eee">注文履歴詳細</span>
       </h2>
       <table class="table table-borderless">
-        <tr>
-          <th>購入者</th>
-          <td><u>
-            <%= link_to admin_customer_path(id: @order.customer_id), class: "text-dark" do %>
-              <%= @order.customer.first_name %>
-              <%= @order.customer.last_name %>
+      　<tr>
+      　　<th>購入者</th>
+        　<td><u>
+        　　<%= link_to admin_customer_path(id: @order.customer_id), class: "text-dark" do %>
+            <%= @order.customer.first_name %>
+            <%= @order.customer.last_name %>
             <% end %>
           </td></u>
         </tr>
@@ -34,10 +34,10 @@
         <tr>
           <th>注文ステータス</th>
           <td>
-          <%= form_with model: @order, url: admin_order_path do |f| %>
+          　<%= form_with model: @order, url: admin_order_path do |f| %>
             <%= f.select :status, Order.statuses_i18n.invert, {prompt: false} %>
             <%= f.submit "更新", class: "btn btn-success ml-5" %>
-          <% end %>
+          　<% end %>
           </td>
         </tr>
       </table>
@@ -56,16 +56,16 @@
         </thead>
         <tbody>
           <% @order_details.each do |order_detail| %>
-            <tr>
-              <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.inclusive_price %></td>
-              <td><%= order_detail.quantity %></td>
-              <td><%= order_detail.inclusive_price*order_detail.quantity %></td>
-              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), local: true do |f| %>
-                <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert, {prompt: false} %></td>
-                <td><%= f.submit "更新", class: "btn btn-success" %></td>
-              <% end %>
-            </tr>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.inclusive_price %></td>
+            <td><%= order_detail.quantity %></td>
+            <td><%= order_detail.inclusive_price*order_detail.quantity %></td>
+            <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), local: true do |f| %>
+            <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert, {prompt: false} %></td>
+            <td><%= f.submit "更新", class: "btn btn-success" %></td>
+            <% end %>
+          </tr>
           <% end %>
         </tbody>
       </table>
