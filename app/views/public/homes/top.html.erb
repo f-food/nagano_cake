@@ -1,27 +1,29 @@
 <div class="container py-5">
-    <div class="row">
-      <div class="col-md-2">
-      <%= render 'admin/genres/index', genres: @genres %>
-      </div>
-       <div  class='col-md-8 offset-1'>
+  <div class="row">
+    
+    <div class="col-md-2">
+    <%= render 'admin/genres/index', genres: @genres %>
+    </div>
+      <div  class='col-md-8 offset-1'>
         <div class="row-md-8 pb-3">
         <%= image_tag'cake.png', size:"625x325" ,style:"position: relative;" %>
-            <p style="position:absolute; top:125px; left:170px; color:#FFF; background-color:rgba(0,0,0,0.3);">
-          ようこそ、ながのCAKEへ！<br>
-          このサイトは、ケーキ販売のECサイトになります。<br>
-          会員でない方も商品の閲覧はできますが、<br>
-          購入には会員登録が必要になります。</p>
+        <p style="position:absolute; top:125px; left:170px; color:#FFF; background-color:rgba(0,0,0,0.3);">
+        ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。</p>
         </div>
         <br>
         <div class = "new-arrival">
-          <h3><strong>新着商品</strong></h3>
+        <h3><strong>新着商品</strong></h3>
           <div class = "new-arrival-contents" style="display:flex; flex-wrap:wrap;">
-           <%= render 'public/items/index', items: @items %>
+          <%= render 'public/items/index', items: @items %>
           </div>
-         </div>
-         <div class = "row justify-content-end">
-          <%= link_to "全ての商品を見る＞",items_path %>
-         </div>
-      </div>
-    </div>
+        </div>
+        <div class = "row justify-content-end">
+        <%= link_to "全ての商品を見る＞",items_path %>
+        </div>
+    　</div>
+    　
   </div>
+</div>
