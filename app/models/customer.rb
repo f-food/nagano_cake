@@ -24,7 +24,7 @@ class Customer < ApplicationRecord
   validates :phone_number, presence: true, format: { :with => PHONE_NUMBER_REGEXP }
 
   def full_name
-    self.last_name + " " + self.first_name
+    self.first_name + " " + self.last_name
   end
 
   def full_name_kana
