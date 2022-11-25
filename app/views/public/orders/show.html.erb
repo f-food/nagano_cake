@@ -38,9 +38,9 @@
       </thead>
       <tbody>
         <tr>
-          <td><%=@order.total_payment.to_s(:delimited)%></td>
+          <td><%= (@order.total_payment - @order.shipping_cost).to_s(:delimited) %></td>
           <td><%=@order.shipping_cost.to_s(:delimited) %></td>
-          <td><% total_price=@order.total_payment+@order.shipping_cost %><%= total_price.to_s(:delimited)%></td>
+          <td><%= @order.total_payment %></td>
         </tr>
       </tbody>
     </table>
