@@ -3,20 +3,23 @@
     <div class="col-md-2">
 		  <%= render 'admin/genres/index', genres: @genres %>
 		</div>
-	  <div class='col-md-9 offset-1'>
-		<h2 class='d-inline mr-2'><%= @genre.name %>一覧(全<%= @genre.items.count %>件)</h2>
-			<div class="row">
-			 <% @genre_items.each do |item| %>
-           	<div class="col-md-3">
-    		     <%=link_to item_path(item) do %>
-    				   <%=image_tag item.image, size: '150x150'%>
-    				  <% end %>
-    				   <p><%= item.name %></p>
-    				   <p>¥<%= item.excluded_price %></p>
-    			   </div>
-			    <% end %>
-			     <%= paginate @items %>
-		</div>
-	  </div>
+			<div class='col-md-9 offset-1'>
+				<h2 class='d-inline mr-2'><%= @genre.name %>一覧</h2>
+				<h4>(全<%= @genre.items.count %>件)</h4>
+				<br>
+				<div class="row">
+					<% @genre_items.each do |item| %>
+					<div class="col-md-3">
+						<%=link_to item_path(item) do %>
+						<%=image_tag item.image, size: '150x150'%>
+						<% end %>
+						<p><%= item.name %></p>
+						<p>¥<%= item.excluded_price %></p>
+					</div>
+					<% end %>
+				<%= paginate @items %>
+				</div>
+			</div>
   </div>
 </div>
+div>
