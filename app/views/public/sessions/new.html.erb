@@ -1,29 +1,33 @@
-<!-- 顧客側 -->
+<div class="container">
 
-<h2>ログイン</h2>
+  <h2 class="mb-5">ログイン</h2>
 
-<%= form_with model: @customer, url: session_path(resource_name), local: true do |f| %>
+  <h3>会員の方はこちらからログイン</h3>
+  <%= form_with model: @customer, url: session_path(resource_name), local: true do |f| %>
+    <table class="table table-borderless align-middle">
+      <tbody>
+        <tr>
+          <td><%= f.label :email, "メールアドレス" %></td>
+          <td colspan="2">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "tanaka@example.com", class: "form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :password, "パスワード" %></td>
+          <td>
+           <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <%= f.submit "ログイン", class: "btn btn-primary" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "tanaka@example.com" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+  <h3>会員登録がお済みでない方</h3>
+  <%= render "public/shared/links" %>
+</div>

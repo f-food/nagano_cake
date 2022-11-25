@@ -12,13 +12,13 @@
         <div class="col-md-3">
           <%= link_to item_path(item.id) do %>
             <%= image_tag item.get_image(150,150) %>
+            <p><%= item.name %></p>
           <% end %>
-          <p>商品名：<%= item.name %></p>
-          <p>価格：¥<%= item.excluded_price.to_s(:delimited) %></p>
+          <p>¥<%= item.excluded_price.to_s(:delimited) %></p>
         </div>
         <% end %>
-        <%= paginate @items %>
       </div>
+      <%= paginate @items %>
     </div>
   </div>
 </div>
