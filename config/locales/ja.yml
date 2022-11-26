@@ -12,10 +12,10 @@ ja:
         shipped: "発送済み"
     order_detail:
       making_status:
-        production_not_allowed: "制作不可"
-        waiting_for_production: "制作待ち"
-        under_construction: "制作中"
-        production_completed: "制作完了"
+        production_not_allowed: "製作不可"
+        waiting_for_production: "製作待ち"
+        under_construction: "製作中"
+        production_completed: "製作完了"
 
     # 新規登録画面
     errors:
