@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  devise_for :users
 
   namespace :admin do
     root :to =>"homes#top"
